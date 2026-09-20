@@ -1,3 +1,47 @@
+# Kubernetes Deployment — Online Boutique
+
+> **Personal deployment and troubleshooting work on Google's Online Boutique microservices application.**
+
+## What I Built
+
+I deployed the Online Boutique application as a **multi-service Kubernetes workload on a local Kind cluster**, using the project's published Kubernetes release manifests.
+
+### Infrastructure & Deployment
+
+- Created a dedicated **Kind Kubernetes cluster** named `boutique`
+- Deployed an **11-service microservices application**
+- Managed the deployment using `kubectl`
+- Verified Pod lifecycle and service readiness
+- Exposed the frontend locally using Kubernetes **port forwarding**
+- Investigated and resolved `ErrImagePull` / `ImagePullBackOff` during the initial deployment
+- Identified the difference between development manifests and the published release manifests
+- Deployed the application using `release/kubernetes-manifests.yaml`
+- Verified inter-service deployment and frontend availability
+
+### Kubernetes Skills Demonstrated
+
+`Kubernetes` · `Kind` · `kubectl` · `Deployments` · `Services` · `Pods` · `Container Images` · `Port Forwarding` · `Troubleshooting`
+
+### Troubleshooting
+
+The initial deployment using the development manifests resulted in multiple Pods entering:
+
+```text
+ErrImagePull
+ImagePullBackOff
+```
+Documentation
+
+Detailed deployment steps, troubleshooting notes, commands, and production considerations are documented in:
+
+DEPLOYMENT.md
+
+I investigated the Pod state and Kubernetes manifests, identified the image configuration issue, and switched to the project's published release manifest.
+
+The application was then successfully deployed and accessed locally through:
+
+kubectl port-forward svc/frontend 8080:80
+
 <!-- <p align="center">
 <img src="/src/frontend/static/icons/Hipster_HeroLogoMaroon.svg" width="300" alt="Online Boutique" />
 </p> -->
